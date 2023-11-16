@@ -1,0 +1,105 @@
+<section id="sidenav" class="bg-white h-full w-[0px] fixed z-30 top-0 left-0 overflow-x-hidden flex flex-col justify-between pb-[60px]" style="transition: 0.5s;">
+    <nav>
+        <div class="flex justify-center p-8">
+            <img class="w-[110px] md:w-[180px]" src="/logo.webp" alt="FGB">
+        </div>
+        <ul class="text-fgb-blue [&>li>a]:font-medium [&>li>a]:px-4 [&>li>a]:py-4 [&>li>a]:block [&>li>a]:w-full">
+            <li>
+                <a class="nav-link" href="/">Inicio</a>
+            </li>
+            <li>
+                <a class="nav-link" href="/catalogos">Catálogos</a>
+            </li>
+            <li>
+                <a class="nav-link" href="/contacto">Contacto</a>
+            </li>
+        </ul>
+        <div class="p-4 flex items-center gap-2">
+            <svg class="text-fgb-blue-dark" width="30" height="30" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                <g fill="currentColor">
+                    <path d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h6zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H5z"/>
+                    <path d="M8 14a1 1 0 1 0 0-2a1 1 0 0 0 0 2z"/>
+                </g>
+            </svg>
+            <div>
+                <p class="text-fgb-blue-dark font-medium">Llamanos</p>
+                <p class="text-fgb-blue border-b-2 border-fgb-blue-light">+52 222 9105 418</p>
+            </div>
+        </div>
+    </nav>
+</section>
+<header class="w-full fixed top-0 z-20">
+    <div class="container mx-auto flex items-center bg-white px-10 py-5 rounded-lg mt-8 shadow-lg">
+        <div class="flex flex-grow">
+            <img class="w-[110px] md:w-[180px]" src="/logo.webp" alt="FGB">
+        </div>
+        <nav class="hidden md:block">
+            <ul class="text-fgb-blue flex text-md [&>li>a]:font-medium [&>li>a]:px-4 [&>li>a]:py-2 hover:[&>li>a]:border-b-4 hover:[&>li>a]:border-fgb-blue-light">
+                <li><a class="nav-linkMD" href="/">Inicio</a></li>
+                <li><a class="nav-linkMD" href="/catalogos">Catálogos</a></li>
+                <li><a class="nav-linkMD" href="/contacto">Contacto</a></li>
+            </ul>
+        </nav>
+        <nav class="flex flex-grow items-center justify-end gap-2">
+            <div>
+                <svg id="open_sidenav" class="block sm:hidden mr-4" width="30" height="30" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="#000000" d="M3 4h18v2H3V4Zm0 7h18v2H3v-2Zm0 7h18v2H3v-2Z"/>
+                </svg>
+                <svg  id="close_sidenav" class="hidden sm:hidden mr-4" width="30" height="30" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="#000000" d="M18.3 5.71a.996.996 0 0 0-1.41 0L12 10.59L7.11 5.7A.996.996 0 1 0 5.7 7.11L10.59 12L5.7 16.89a.996.996 0 1 0 1.41 1.41L12 13.41l4.89 4.89a.996.996 0 1 0 1.41-1.41L13.41 12l4.89-4.89c.38-.38.38-1.02 0-1.4z"/>
+                </svg>
+            </div>
+            <svg class="hidden sm:block text-fgb-blue-dark" width="30" height="30" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                <g fill="currentColor">
+                    <path d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h6zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H5z"/>
+                    <path d="M8 14a1 1 0 1 0 0-2a1 1 0 0 0 0 2z"/>
+                </g>
+            </svg>
+            <div class="hidden sm:block">
+                <p class="text-fgb-blue-dark font-medium">Llamanos</p>
+                <p class="text-fgb-blue border-b-2 border-fgb-blue-light">+52 222 9105 418</p>
+            </div>
+        </nav>
+    </div>
+</header>
+<script>
+    const currentPage = window.location.pathname;
+	const open_sidenav = document.querySelector('#open_sidenav') as HTMLElement,
+		sidenav = document.querySelector('#sidenav') as HTMLElement,
+		close_sidenav = document.querySelector('#close_sidenav') as HTMLElement;
+
+	open_sidenav.addEventListener('click', ()=>{
+		sidenav.style.width = '250px';
+		open_sidenav.style.display = 'none';
+		close_sidenav.style.display = 'block';
+	})
+
+	close_sidenav.addEventListener('click', ()=>{
+		sidenav.style.width = '0px';
+		open_sidenav.style.display = 'block';
+		close_sidenav.style.display = 'none';
+	})
+
+    const menuLinksMD = document.querySelectorAll('.nav-linkMD');
+
+    menuLinksMD.forEach(link => {
+        const linkPath = link.getAttribute('href');
+        if (linkPath === currentPage) {
+            link.classList.add('border-b-4');
+            link.classList.add('border-fgb-blue-light');
+        }
+    });
+
+    const menuLinks = document.querySelectorAll('.nav-link');
+
+    menuLinks.forEach(link => {
+        const linkPath = link.getAttribute('href');
+        if (linkPath === currentPage) {
+            link.classList.add('text-slate-100');
+            link.classList.add('border-b-4');
+            link.classList.add('border-fgb-blue-light');
+            let li = link.parentNode as HTMLElement;
+            li.classList.add('bg-fgb-blue');
+        }
+    });
+</script>
